@@ -7,8 +7,6 @@
   </head>
   <body>
 
-
-
     <div class="container">
       <div class="sandbox">
 
@@ -51,20 +49,21 @@
               default:
                 break;
             }
+            node.style.transition = 'transform .5s ease'
+            node.style.transform = 'translateX(1em)'
           } else if (!flag) {
             switch (node.children[x].className) {
               case 'top-line':
                 node.children[x].style.transform = "rotate(0deg)  translateY(2em)"
-
                 setTimeout(() => {
                   node.children[x].style.transform = "initial"
                   node.children[x].style.width = "10em"
-                },600)
+                }, 600)
                 break;
               case 'mid-line':
               setTimeout(() => {
                 node.children[x].style.opacity = "1"
-              },450)
+              }, 450)
                 break;
               case 'low-line':
               node.children[x].style.transform = "rotate(0deg) translateY(-2em)"
@@ -76,11 +75,12 @@
               default:
                 break;
             }
+            node.style.transition = 'transform .5s ease'
+            node.style.transform = 'translateX(0em)'
           }
         }
         flag = !flag
       })
     </script>
-
   </body>
 </html>
