@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/public/style/style.css">
+  </head>
+  <body>
+
+
+
+    <div class="container">
+      <div class="sandbox">
+
+        <div class="node">
+          <div class="top-line"></div>
+          <div class="mid-line"></div>
+          <div class="low-line"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      let flag = true;
+      let node = document.querySelector('.node')
+      node.addEventListener('click', () => {
+        for (let x = 0; x < node.childElementCount; x++) {
+          if (flag) {
+            switch (node.children[x].className) {
+              case 'top-line':
+                node.children[x].style.width = "7.5em"
+                node.children[x].style.transform = "translateY(2em)"
+                setTimeout(() => {
+                  node.children[x].style.transform = "rotate(45deg) translateY(1.75em) translateX(1.25em)"
+                },500)
+                break;
+              case 'mid-line':
+              node.children[x].style.width = "7.5em"
+              setTimeout(() => {
+                node.children[x].style.opacity = "0"
+              },250)
+                break;
+              case 'low-line':
+                node.children[x].style.transform = "translateY(-2em)"
+                node.children[x].style.width = "7.5em"
+                setTimeout(() => {
+                  node.children[x].style.transform = "rotate(135deg) translateY(2em) translateX(-.5em)"
+                },500)
+                break;
+              default:
+                break;
+            }
+          } else if (!flag) {
+            switch (node.children[x].className) {
+              case 'top-line':
+                node.children[x].style.transform = "rotate(0deg)  translateY(2em)"
+
+                setTimeout(() => {
+                  node.children[x].style.transform = "initial"
+                  node.children[x].style.width = "10em"
+                },600)
+                break;
+              case 'mid-line':
+              setTimeout(() => {
+                node.children[x].style.opacity = "1"
+              },450)
+                break;
+              case 'low-line':
+              node.children[x].style.transform = "rotate(0deg) translateY(-2em)"
+                setTimeout(() => {
+                  node.children[x].style.transform = "initial"
+                  node.children[x].style.width = "5em"
+                },600)
+                break;
+              default:
+                break;
+            }
+          }
+        }
+        flag = !flag
+      })
+    </script>
+
+  </body>
+</html>
